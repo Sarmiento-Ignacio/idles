@@ -1,0 +1,24 @@
+---
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://www.idlesband.com/wp-content/uploads/sites/3/2023/10/cropped-idles-favicon-2023-32x32.png"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Login</title>
+  </head>
+  <body class="bg-[#eb7858] min-h-screen pb-32">
+    
+    <main >
+      <slot />
+    </main>
+  </body>
+
+</html>
