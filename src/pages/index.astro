@@ -1,11 +1,16 @@
 ---
 import BaseLayout from "../Layout/BaseLayout.astro"
+import { SignOut } from "auth-astro/components";
+import { getSession } from "auth-astro/server";
+const session = await getSession(Astro.request);
 const title = "IDLES"
+
+if (!session) {
+  return Astro.redirect("/login");
+}
 ---
-
-
 <BaseLayout title={title}>
-  
   <p>Esta es una pagina creada por fans de la banda IDLES</p>
   <p>Si quieres saber mas sobre la banda visita su pagina oficial <a href="https://www.idlesband.com/">IDLES</a></p>
+  <SignOut>CERRAR</SignOut>
 </BaseLayout>
