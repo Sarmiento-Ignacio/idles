@@ -1,4 +1,5 @@
 
+
 import Google from '@auth/core/providers/google';
 import GitHub from '@auth/core/providers/github';
 import { defineConfig } from 'auth-astro';
@@ -14,4 +15,5 @@ export default defineConfig({
       clientSecret: import.meta.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
+
 });
