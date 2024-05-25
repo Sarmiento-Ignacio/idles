@@ -33,7 +33,7 @@ export default async function seed() {
 		{
 			id: "pofdggpodfop",
 			title: "hacer una app",
-			description: "hacer una app de astro",
+			description: "hacer una app de juegos",
 			categoryId: "sdafsadf!@#",
 			userId: "123345"
 		},
