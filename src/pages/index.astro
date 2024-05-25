@@ -24,7 +24,7 @@ if (!session) {
   <ul>
     {todos.map(todo => (
       <li>
-        {`Titulo: ${todo.Todo.title}, Categoria: ${todo.Category.label}, Usuario: ${todo.User.username}`}
+        {`Titulo: ${todo.Todo.title}, Categoria: ${todo.Category.label}, Usuario: ${todo.User.username}, Descripcion: ${todo.Todo.description}`}
         </li>
     ))}
   <SignOut>CERRAR</SignOut>
