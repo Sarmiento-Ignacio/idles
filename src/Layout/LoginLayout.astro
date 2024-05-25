@@ -1,8 +1,11 @@
 ---
+
+import { ViewTransitions } from 'astro:transitions';
 const { title } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" transition:animate="slide">
+
   <head>
     <meta charset="utf-8" />
     <link
@@ -13,6 +16,11 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Login</title>
+
+    <ViewTransitions />
+
+    
+
   </head>
   <body class="bg-[#eb7858] min-h-screen pb-32">
     

@@ -1,11 +1,31 @@
 ---
 import BaseLayout from "../Layout/BaseLayout.astro"
+import { SignOut } from "auth-astro/components";
+import { getSession } from "auth-astro/server";
+import { db, User, Todo } from "astro:db";
+import { Category } from "astro:db";
+import { eq } from "astro:db";
+
+const users = await db.select().from(User);
+const todos = await db.select().from(Todo).innerJoin(User, eq(Todo.userId, User.id))
+.innerJoin(Category, eq(Todo.categoryId, Category.id));
+console.log(todos);
+const session = await getSession(Astro.request);
 const title = "IDLES"
+
+if (!session) {
+  return Astro.redirect("/login");
+}
 ---
-
-
 <BaseLayout title={title}>
-  
   <p>Esta es una pagina creada por fans de la banda IDLES</p>
   <p>Si quieres saber mas sobre la banda visita su pagina oficial <a href="https://www.idlesband.com/">IDLES</a></p>
+  <h1>Todos</h1>
+  <ul>
+    {todos.map(todo => (
+      <li>
+        {`Titulo: ${todo.Todo.title}, Categoria: ${todo.Category.label}, Usuario: ${todo.User.username}, Descripcion: ${todo.Todo.description}`}
+        </li>
+    ))}
+  <SignOut>CERRAR</SignOut>
 </BaseLayout>
