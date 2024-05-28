@@ -2,6 +2,7 @@
 import LoginForm from "@/components/LoginForm.astro";
 import LoginLayout from "@/Layout/LoginLayout.astro";
 
+
 import { SignIn } from "auth-astro/components";
 import { getSession } from "auth-astro/server";
 const session = await getSession(Astro.request);
@@ -10,6 +11,7 @@ const session = await getSession(Astro.request);
 if (session) {
   return Astro.redirect("/");
 }
+
 ---
 
 <LoginLayout title="Login">
@@ -17,6 +19,7 @@ if (session) {
     <div
       class="bg-white shadow-none sm:shadow-lg px-8 sm:px-12 w-full xs:w-full sm:w-8/12 md:w-7/12 lg:w-7/12 xl:w-2/6 h-screen sm:h-auto py-8"
     >
+
       <div class="text-center w-full font-bold text-3xl text-black p-4">
         LOGIN
       </div>
@@ -75,3 +78,4 @@ if (session) {
     </div>
   </div>
   </form>
+
