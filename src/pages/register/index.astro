@@ -1,0 +1,46 @@
+---
+import LoginLayout from "@/Layout/LoginLayout.astro";
+import RegisterForm from "@/components/RegisterForm.astro";
+import { db, User } from "astro:db";
+
+if (Astro.request.method === "POST") {
+  const formData = await Astro.request.formData();
+  const Email = formData.get("email");
+  const password = formData.get("password");
+  const passwordConfirmation = formData.get("confirm-password");
+  const username = formData.get("name");
+  if (
+    typeof Email === "string" &&
+    typeof password === "string" &&
+    typeof passwordConfirmation === "string" &&
+    typeof username === "string"
+  ) {
+    await db.insert(User).values({
+      
+      
+      Email,
+      password,
+      username,
+    });
+  }
+}
+---
+
+<LoginLayout title="registro">
+  <body class="bg-gray-100">
+    <div class="min-h-screen flex items-center justify-center">
+      <div class="max-w-md w-full p-6 bg-white shadow-lg">
+        <h1 class="text-2xl text-center text-bold mt-8 mb-6">Registro</h1>
+        <RegisterForm />
+        <div class="text-center">
+          <p class="text-sm">
+            ¿Ya tienes una cuenta? <a
+              href="/login"
+              class="text-orange-500 hover:underline">Inicia sesión</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</LoginLayout>
